@@ -1,13 +1,19 @@
 
-##### **2. `retrieve.md`**
+---
 
-- **Open** `retrieve.md`.
-- **Add this content:**
+### 2. `retrieve.md`
 
 ```markdown
 # Retrieve Operation
 
 ## Command
 ```python
+from bookshelf.models import Book
+
+# Retrieve and display all attributes of the book created earlier
 all_books = Book.objects.all()
-print(all_books)  # Output
+for book in all_books:
+    print(book.title, book.author, book.publication_year)  
+    
+    
+# Output: 1984 George Orwell 1949
