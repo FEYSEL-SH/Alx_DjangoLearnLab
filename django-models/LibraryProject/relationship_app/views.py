@@ -56,3 +56,40 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, 'logout.html')
+
+
+
+
+
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .models import UserProfile
+
+# Helper function to check if user is an Admin
+def is_admin(user):
+    return user.profile.role == 'Admin'
+
+# Helper function to check if user is a Librarian
+def is_librarian(user):
+    return user.profile.role == 'Librarian'
+
+# Helper function to check if user is a Member
+def is_member(user):
+    return user.profile.role == 'Member'
+
+# Admin View - Only accessible by Admins
+@login_required
+@user_passes_test(is_admin)
+def admin_view(request):
+    return render(request, 'admin_view.html')
+
+# Librarian View - Only accessible by Librarians
+@login_required
+@user_passes_test(is_librarian)
+def librarian_view(request):
+    return render(request, 'librarian_view.html')
+
+# Member View - Only accessible by Members
+@login_required
+@user_passes_test(is_member)
+def member_view(request):
+    return render(request, 'member_view.html')

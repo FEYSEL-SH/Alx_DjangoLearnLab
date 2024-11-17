@@ -14,6 +14,13 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),  # Login view
     path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),  # Logout view
 
+
     # User registration view (still using function-based view in this case)
      path('register/', views.register, name='register'),  # Registration view
+
+
+
+     path('admin/', views.admin_view, name='admin_view'),
+    path('librarian/', views.librarian_view, name='librarian_view'),
+    path('member/', views.member_view, name='member_view'),
 ]
