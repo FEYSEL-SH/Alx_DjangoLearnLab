@@ -30,10 +30,12 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')  # Redirect to login page after successful registration
+            user = form.save()  # Save the user to the database
+            login(request, user)  # Log the user in immediately after registration
+            return redirect('list_books')  # Redirect to a desired page after registration
     else:
         form = UserCreationForm()
+
     return render(request, 'register.html', {'form': form})
 
 # User login view
