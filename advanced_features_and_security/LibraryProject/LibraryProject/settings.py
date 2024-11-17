@@ -128,6 +128,9 @@ SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript from accessing the session 
 # Prevent browser-based XSS attacks
 SECURE_BROWSER_XSS_FILTER = True
 
+# Ensure Django knows the request came via HTTPS when it's behind a proxy
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Clickjacking protection
 X_FRAME_OPTIONS = 'DENY'  # Prevent embedding in iframe
 
