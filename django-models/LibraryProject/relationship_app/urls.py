@@ -1,6 +1,7 @@
 # relationship_app/urls.py
 from django.urls import path
-from . import views  # Import all views at once
+from django.contrib.auth.views import LoginView, LogoutView  # Import LoginView and LogoutView
+from . import views  # Import your custom views
 
 urlpatterns = [
     # URL pattern for function-based view (List all books)
@@ -9,8 +10,10 @@ urlpatterns = [
     # URL pattern for class-based view (Library detail)
     path('library/<int:pk>/', views.LibraryDetailView.as_view(), name='library_detail'),
 
-    # User authentication URLs
-    path('login/', views.login_view, name='login'),  # User login
-    path('logout/', views.logout_view, name='logout'),  # User logout
-    path('register/', views.register, name='register'),  # User registration
+    # URL patterns for user authentication using class-based views
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),  # Login view
+    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),  # Logout view
+
+    # User registration view (still using function-based view in this case)
+    path('register/', views.register, name='register'),  # Registration view
 ]
