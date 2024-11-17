@@ -78,8 +78,9 @@ def admin_view(request):
 def is_librarian(user):
     return user.profile.role == 'Librarian'
 
-@login_required
-@user_passes_test(is_librarian)
+# View that only 'Librarian' users can access
+@login_required  # Ensure the user is logged in
+@user_passes_test(is_librarian)  # Only allow access if user is a Librarian
 def librarian_view(request):
     return render(request, 'librarian_view.html')
 
@@ -88,7 +89,8 @@ def librarian_view(request):
 def is_member(user):
     return user.profile.role == 'Member'
 
-@login_required
-@user_passes_test(is_member)
+# View that only 'Member' users can access
+@login_required  # Ensure the user is logged in
+@user_passes_test(is_member)  # Only allow access if user is a Member
 def member_view(request):
     return render(request, 'member_view.html')
