@@ -28,6 +28,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+# settings.py
+LOGIN_REDIRECT_URL = '/'  # Redirect to home or books listing page after login
+LOGOUT_REDIRECT_URL = '/login/'  # Redirect to login page after logout
+
+
 # Application definition
 
 INSTALLED_APPS = [
