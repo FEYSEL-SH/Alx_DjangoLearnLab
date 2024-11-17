@@ -136,3 +136,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # Redirect all HTTP traffic to HTTPS
 SECURE_SSL_REDIRECT = True  # Automatically redirect HTTP to HTTPS
+
+SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
+SECURE_HSTS_SECONDS = 31536000  # One year in seconds
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
