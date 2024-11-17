@@ -1,0 +1,5 @@
+<form method="POST" action="{% url 'submit_form' %}">
+    {% csrf_token %}
+    <input type="text" name="book_name" required>
+    <button type="submit">Submit</button>
+</form>
