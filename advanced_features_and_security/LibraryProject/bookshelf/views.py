@@ -30,3 +30,22 @@ def delete_post(request, post_id):
     if request.method == 'POST':
         post.delete()
     return render(request, 'delete_post.html', {'post': post})
+
+
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required
+from .models import Book
+
+# View to list all books
+@permission_required('bookshelf.can_view', raise_exception=True)
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'book_list.html', {'books': books})
+
+# View to view a specific book
+@permission_required('bookshelf.can_view', raise_exception=True)
+def books(request, book_id):
+    book = Book.objects.get(id=book_id)
+    return render(request, 'book_detail.html', {'book': book})
+
