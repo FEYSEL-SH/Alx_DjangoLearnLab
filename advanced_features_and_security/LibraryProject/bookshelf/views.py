@@ -5,6 +5,15 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from .models import Post
 from django.http import HttpResponseForbidden
+from .forms import ExampleForm
+
+
+from .forms import ExampleForm
+
+def example_view(request):
+    form = ExampleForm()
+    return render(request, 'form_example.html', {'form': form})
+
 
 # View to create a post
 @permission_required('app_name.can_create', raise_exception=True)
