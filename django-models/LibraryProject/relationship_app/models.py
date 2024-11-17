@@ -48,15 +48,15 @@ class UserProfile(models.Model):
         ('Librarian', 'Librarian'),
         ('Member', 'Member'),
     )
-    
-    # Link to the built-in User model
+
+    # One-to-One relationship with the User model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES)
 
     def __str__(self):
         return f"{self.user.username} - {self.role}"
 
-# Signal to automatically create a UserProfile when a new User is created
+# Signal to automatically create a UserProfile when a new user is created
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
