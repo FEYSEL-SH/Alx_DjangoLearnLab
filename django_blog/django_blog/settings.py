@@ -134,8 +134,21 @@ STATICFILES_DIRS = [BASE_DIR / 'blog/static']
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'blog/templates'],
-    }
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',  # Ensure this is present
+                'django.contrib.messages.context_processors.messages',  # Ensure this is present
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+            ],
+        },
+    },
 ]
 
 # Default primary key field type
